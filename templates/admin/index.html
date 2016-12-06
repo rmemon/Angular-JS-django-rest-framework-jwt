@@ -1,0 +1,116 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static " admin/css/dashboard.css" %}" />
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
+      type="text/css"/>
+<link href="{% static 'admin_new/assets/global/plugins/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet"
+      type="text/css"/>
+<link href="{% static 'admin_new/assets/global/plugins/simple-line-icons/simple-line-icons.min.css' %}" rel="stylesheet"
+      type="text/css"/>
+<link href="{% static 'admin_new/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet' %}"
+      type="text/css"/>
+<link href="{% static 'admin_new/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css' %}"
+      rel="stylesheet" type="text/css"/>
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<link href="{% static 'admin_new/assets/global/plugins/select2/css/select2.min.css' %}" rel="stylesheet"
+      type="text/css"/>
+<link href="{% static 'admin_new/assets/global/plugins/select2/css/select2-bootstrap.min.css' %}" rel="stylesheet"
+      type="text/css"/>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL STYLES -->
+<link href="{% static 'admin_new/assets/global/css/components.min.css' %}" rel="stylesheet" id="style_components"
+      type="text/css"/>
+<link href="{% static 'admin_new/assets/global/css/plugins.min.css' %}" rel="stylesheet" type="text/css"/>
+<!-- END THEME GLOBAL STYLES -->
+<!-- BEGIN PAGE LEVEL STYLES -->
+<link href="{% static 'admin_new/assets/pages/css/login.min.css' %}" rel="stylesheet" type="text/css"/>
+<!-- END PAGE LEVEL STYLES -->
+<!-- BEGIN THEME LAYOUT STYLES -->
+<!-- END THEME LAYOUT STYLES -->
+<link rel="shortcut icon" href="favicon.ico"/> </head>
+{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="/admin">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>Dashboard</span>
+        </li>
+    </ul>
+</div>
+
+
+<h1 class="page-title"> Dashboard
+    <small>dashboard &amp; statistics</small>
+</h1>
+
+
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
+            <div class="visual">
+                <i class="fa fa-comments"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="1349">1349</span>
+                </div>
+                <div class="desc"> New Feedbacks</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 red" href="#">
+            <div class="visual">
+                <i class="fa fa-bar-chart-o"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="12,5">12,5</span>M$
+                </div>
+                <div class="desc"> Total Profit</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 green" href="#">
+            <div class="visual">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="549">549</span>
+                </div>
+                <div class="desc"> New Orders</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
+            <div class="visual">
+                <i class="fa fa-globe"></i>
+            </div>
+            <div class="details">
+                <div class="number"> +
+                    <span data-counter="counterup" data-value="89">89</span>%
+                </div>
+                <div class="desc"> Brand Popularity</div>
+            </div>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

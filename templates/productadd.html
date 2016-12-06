@@ -1,0 +1,30 @@
+<div>
+    <h1>product Add</h1>
+    <form class="form-horizontal" ng-submit='doProductadd(product)'>
+        <div  ng-show='productError.non_field_errors'>
+            <span ng-repeat='error in productError.non_field_errors'>
+                {{ error }} <br/>
+            </span>
+        </div>
+        <div class="form-group col-xs-7" ng-class="{'has-error': productError.title }">
+            <input class="form-control" type='text' ng-model='product.title' id='productTitle'  placeholder='Title'>
+            <label  for="productTitle" ng-if='productError.title'><span ng-repeat='error in productError.title'>{{ error }}<br/></span></label>
+
+        </div>
+        <div class="form-group col-xs-7" ng-class="{'has-error': productError.charge_perhour }">
+            <input class="form-control" type='text' ng-model='product.charge_perhour' id='productCharge_perhour'  placeholder='Charge Perhour'>
+            <label  for="productCharge_perhour" ng-if='productError.charge_perhour'><span ng-repeat='error in productError.charge_perhour'>{{ error }}<br/></span></label>
+        </div>
+        <div class="form-group col-xs-7" ng-class="{'has-error': productError.charge_perday }">
+            <input class="form-control" type='text' ng-model='product.charge_perday' id='productCharge_perday'  placeholder='Charge Perday'>
+            <label  for="productCharge_perday" ng-if='productError.charge_perday'><span ng-repeat='error in productError.charge_perday'>{{ error }}<br/></span></label>
+        </div>
+        <div class="form-group col-xs-7"  ng-class="{'has-error': productError.charge_perweek }">
+            <input class="form-control" type='text' ng-model='product.charge_perweek' id='productCharge_perweek'  placeholder='Charge Perweek'>
+            <label  for="productCharge_perweek" ng-if='productError.charge_perweek'><span ng-repeat='error in productError.charge_perweek'>{{ error }}<br/></span></label>
+        </div>
+        <div class="form-group col-xs-7">
+            <input class="btn btn-info" type='submit' value='Add' />
+        </div>
+    </form>
+</div>

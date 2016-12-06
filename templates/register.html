@@ -1,0 +1,39 @@
+
+    <h1>Signup</h1>
+    <form class="form-horizontal" ng-submit='doRegister(user)'>
+        <div  ng-show='registerError.non_field_errors'>
+            <span ng-repeat='error in registerError.non_field_errors'>
+                {{ error }} <br/>
+            </span>
+        </div>
+        <div class="form-group col-xs-7" ng-class="{'has-error': registerError.username }">
+            <input class="form-control" type='text' ng-model='user.username' id='registerUsername'  placeholder='Username'>
+
+            <label  for="registerUsername" ng-if='registerError.username'><span ng-repeat='error in registerError.username'>{{ error }}<br/></span></label>
+
+        </div>
+        <div class="form-group col-xs-7" ng-class="{'has-error': registerError.email }">
+            <input class="form-control"  type='email' ng-model='user.email' id='registerUsername'  placeholder='Email'>
+            <label class="control-label" for="registerUsername" ng-if='registerError.email'><span ng-repeat='error in registerError.email'>{{ error }}<br/></span></label>
+
+        </div>
+        <div class="form-group col-xs-7" ng-class="{'has-error': registerError.email2 }">
+            <input class="form-control" type='email' ng-model='user.email2' id='registerEmail2'  placeholder='Confirm Email'>
+
+            <label  for="registerEmail2" ng-if='registerError.email2'><span ng-repeat='error in registerError.email2'>{{ error }}<br/></span></label>
+
+        </div>
+
+
+            <div class="form-group col-xs-7" ng-class="{'has-error': registerError.password }">
+            <input class="form-control" type='password' ng-model='user.password' id='registerPassword'   placeholder='Password'>
+
+            <label  for="registerPassword" ng-if='registerError.password'><span ng-repeat='error in registerError.password'>{{ error }}<br/></span></label>
+
+
+        </div>
+        <div class="form-group col-xs-7">
+            <input class="btn btn-info" type='submit' value='signup'  /><br/>
+        </div>
+
+    </form>

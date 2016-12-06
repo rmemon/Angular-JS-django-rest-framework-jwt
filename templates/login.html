@@ -1,0 +1,33 @@
+<div>
+    <h1>Login</h1>
+    <form class="form-horizontal" ng-submit='doLogin(user)'>
+        <div  ng-show='loginError.non_field_errors'>
+            <span ng-repeat='error in loginError.non_field_errors'>
+                {{ error }} <br/>
+            </span>
+        </div>
+        <div class="form-group col-xs-7" ng-class="{'has-error': loginError.username }">
+            <input class="form-control " type='text' ng-model='user.username' id='loginUsername'  placeholder='Username'>
+            <label  for="loginUsername" ng-if='loginError.username'><span ng-repeat='error in loginError.username'>{{ error }}<br/></span></label>
+
+
+        </div>
+
+        <div class="form-group col-xs-7" ng-class="{'has-error': loginError.password }">
+            <input class="form-control" type='password' ng-model='user.password' placeholder='Password'>
+            <label  for="loginUsername" ng-if='loginError.password'><span ng-repeat='error in loginError.password'>{{ error }}<br/></span></label>
+        </div>
+        <div class="form-group col-xs-7">
+            <input type='submit' class="btn btn-info" value='Login' /><br/>
+        </div>
+        <div class="form-group col-xs-7">
+            <p>Did you need to <a ng-href='/register'>register</a>?</p>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+

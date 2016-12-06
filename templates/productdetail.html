@@ -1,0 +1,63 @@
+<div class="item-content">
+    <div class="heading">
+        <h4 class="text-dark heading-tag ng-binding">{{ post.title | uppercase }} </h4>
+    </div>
+    <table class="table font-size16 font-light text-dark">
+        <colgroup>
+            <col width="30%">
+            <col>
+        </colgroup>
+        <tbody>
+        <tr>
+            <td>Per Hour</td>
+            <td class="text-green"><strong class="ng-binding">${{ post.charge_perhour }}</strong></td>
+        </tr>
+        <tr>
+            <td>Per Day</td>
+            <td class="text-green"><strong class="ng-binding"> ${{ post.charge_perday }} </strong></td>
+        </tr>
+        <tr>
+            <td>Per Week</td>
+            <td class="text-green"><strong class="ng-binding"> ${{ post.charge_perweek }} </strong></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div>
+    <h2 >product Update</h2>
+    <form class="form-horizontal" ng-submit='updateProduct(post)'>
+        <div class="form-group col-xs-7" ng-class="{'has-error': postError.title }">
+            <input class="form-control" ng-model='post.title' type='text' id='postTitle' placeholder='Title' value="{{ post.title }}">
+            <label for="postTitle" ng-if='postError.title'><span
+                    ng-repeat='error in productError.title'>{{ error }}<br/></span></label>
+        </div>
+
+
+        <div class="form-group col-xs-7" ng-class="{'has-error': postError.charge_perhour }">
+            <input class="form-control" ng-model='post.charge_perhour' type='text' id='postCharge_perhour' placeholder='Title'
+                   value="{{ post.charge_perhour }}">
+            <label for="postcharge_perhour" ng-if='postError.title'><span
+                    ng-repeat='error in productError.charge_perhour'>{{ error }}<br/></span></label>
+        </div>
+
+        <div class="form-group col-xs-7" ng-class="{'has-error': postError.charge_perday }">
+            <input class="form-control" ng-model='post.charge_perday' type='text' id='postCharge_perday' placeholder='Title'
+                   value="{{ post.charge_perday }}">
+            <label for="postcharge_perday" ng-if='postError.title'><span
+                    ng-repeat='error in productError.charge_perday'>{{ error }}<br/></span></label>
+        </div>
+
+        <div class="form-group col-xs-7" ng-class="{'has-error': postError.charge_perweek }">
+            <input class="form-control" ng-model='post.charge_perweek' type='text' id='postCharge_perweek' placeholder='Title'
+                   value="{{ post.charge_perweek }}">
+            <label for="postcharge_perweek" ng-if='postError.title'><span
+                    ng-repeat='error in productError.charge_perweek'>{{ error }}<br/></span></label>
+        </div>
+
+        <div class="form-group col-xs-7">
+            <input class="btn btn-info" type='submit' value='Update'/>
+        </div>
+    </form>
+</div>

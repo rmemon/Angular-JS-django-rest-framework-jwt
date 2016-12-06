@@ -1,0 +1,17 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" ng-href='/'>Standard Django With Angular JS</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a ng-href='/about'>About</a></li>
+                <li class="active"><a ng-href='/'>Home</a></li>
+                <li class="active"><a ng-href='/blog/'>blog</a></li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><a ng-href="/login" ng-hide='userLoggedIn'> <span class="glyphicon glyphicon-log-in"></span>  Login</a>
+                <li class="active"><a ng-href="/logout" ng-show='userLoggedIn'>Logout</a></li>
+    </ul>
+  </div>
+</nav>
