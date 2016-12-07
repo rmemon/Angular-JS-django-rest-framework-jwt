@@ -20,7 +20,7 @@ from django.views.generic.base import TemplateView
 from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework_jwt.views import refresh_jwt_token
 
-from product.views import PostListAPIView,PostCreateAPIView, ProductDetailAPIView, ProductUpdateAPIView, \
+from product.views import ProductListAPIView,PostCreateAPIView, ProductDetailAPIView, ProductUpdateAPIView, \
     ProductDeleteAPIView
 from users import views as user_views
 
@@ -34,7 +34,7 @@ urlpatterns = [
     url(r'^api/users/', include("users.urls", namespace='users-api')),
     url(r'^admin/logout$', user_views.logout_view, name='logout'),
 
-    url(r'^api/product/$', PostListAPIView.as_view()),
+    url(r'^api/product/$', ProductListAPIView.as_view()),
     url(r'^api/product/(?P<id>[0-9]+)/$', ProductDetailAPIView.as_view(), name='detail'),
 
     url(r'^api/product/(?P<id>[0-9]+)/edit/$', ProductUpdateAPIView.as_view(), name='detail'),
