@@ -7,8 +7,7 @@ Django with angular js
 
 
 
-
-![Alt text](https://github.com/rmemon/Angular-JS-django-rest-framework-jwt/blob/master/tscreen.png?raw=true "Optional Title")
+![Alt text](https://github.com/rmemon/Angular-JS-django-rest-framework-jwt/blob/master/rsz_screenshot_from_2016-12-07_13-18-37.png?raw=true "Optional Title")
 
 
 Requirements
