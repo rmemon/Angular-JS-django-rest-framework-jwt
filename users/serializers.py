@@ -33,10 +33,6 @@ class UserCreateSerializer(ModelSerializer):
                         }
 
     def validate(self, data):
-        # email = data['email']
-        # user_qs = User.objects.filter(email=email)
-        # if user_qs.exists():
-        #     raise ValidationError("This user has already registered.")
         return data
 
     def validate_email(self, value):
@@ -68,7 +64,6 @@ class UserCreateSerializer(ModelSerializer):
             email=email
         )
         user_obj.set_password(password)
-        # user_obj.active=False
         user_obj.save()
         payload = jwt_payload_handler(user_obj)
         token = jwt_encode_handler(payload)
@@ -80,12 +75,10 @@ class UserLoginSerializer(ModelSerializer):
     token = CharField(allow_blank=True, read_only=True)
     username = CharField()
 
-    # email = EmailField(label='Email Address')
     class Meta:
         model = User
         fields = [
             'username',
-            # 'email',
             'password',
             'token',
 
@@ -101,19 +94,14 @@ class UserLoginSerializer(ModelSerializer):
         user_b = User.objects.filter(email__iexact=username)
         user_qs = (user_a | user_b).distinct()
         if user_qs.exists() and user_qs.count() == 1:
-            user_obj = user_qs.first()  # User.objects.get(id=1)
+            user_obj = user_qs.first()
             password_passes = user_obj.check_password(password)
             if not user_obj.is_active:
                 raise ValidationError("This user is inactive")
-            # HTTPS
             if password_passes:
-                # token
                 data['username'] = user_obj.username
-                # data['email'] = user_obj.email
                 payload = jwt_payload_handler(user_obj)
                 token = jwt_encode_handler(payload)
                 data['token'] = token
                 return data
         raise ValidationError("Invalid credentials")
-
-

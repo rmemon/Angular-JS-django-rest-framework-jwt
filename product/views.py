@@ -1,20 +1,19 @@
-# Create your views here.
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, RetrieveUpdateAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 
 from product.models import Product
-from product.serializers import PostListSerializer, ProductCreateUpdateSerializer, ProductDetailSerializer
+from product.serializers import ProductCreateUpdateSerializer, ProductDetailSerializer, ProductListSerializer
 
 
-class PostListAPIView(ListAPIView):
-    serializer_class = PostListSerializer
+class ProductListAPIView(ListAPIView):
+    serializer_class = ProductListSerializer
     filter_backends = [SearchFilter, OrderingFilter]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self, *args, **kwargs):
         queryset_list = Product.objects.all()
-        queryset_list=queryset_list.order_by("-id")
+        queryset_list = queryset_list.order_by("-id")
         return queryset_list
 
 

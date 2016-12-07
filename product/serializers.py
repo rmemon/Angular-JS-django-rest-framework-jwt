@@ -3,10 +3,7 @@ from rest_framework.serializers import ModelSerializer
 from product.models import Product
 
 
-class PostListSerializer(ModelSerializer):
-    # url = post_detail_url
-    # user = UserDetailSerializer(read_only=True)
-    # image = SerializerMethodField()
+class ProductListSerializer(ModelSerializer):
     class Meta:
         model = Product
         fields = [
@@ -31,6 +28,7 @@ class ProductCreateUpdateSerializer(ModelSerializer):
             'charge_perweek',
         ]
 
+
 class ProductDetailSerializer(ModelSerializer):
     class Meta:
         model = Product
@@ -41,4 +39,3 @@ class ProductDetailSerializer(ModelSerializer):
             'charge_perday',
             'charge_perweek',
         ]
-
