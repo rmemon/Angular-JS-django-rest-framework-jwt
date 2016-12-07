@@ -5,13 +5,17 @@ Start Using Django with djangorestframework and  Angular js
 Django with angular js
 =========
 
+
+![Alt text](https://github.com/rmemon/Angular-JS-django-rest-framework-jwt/blob/master/tscreen.png?raw=true "Optional Title")
+
+
 Requirements
 ------------
 
 pip install -r requirement.txt
 
 
-![Alt text](https://github.com/rmemon/Angular-JS-django-rest-framework-jwt/blob/master/tscreen.png?raw=true "Optional Title")
+
 
 
 Usage
