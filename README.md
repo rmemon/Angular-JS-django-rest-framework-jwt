@@ -6,6 +6,8 @@ Django with angular js
 =========
 
 
+
+
 ![Alt text](https://github.com/rmemon/Angular-JS-django-rest-framework-jwt/blob/master/tscreen.png?raw=true "Optional Title")
 
 
