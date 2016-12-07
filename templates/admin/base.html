@@ -1,275 +1,88 @@
-{% load i18n static %}
-<!DOCTYPE html>
+{% load i18n static %}<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
 <title>{% block title %}{% endblock %}</title>
 <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />
-
 {% block extrastyle %}{% endblock %}
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
 {% block extrahead %}{% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
-
-
-    <meta charset="utf-8" />
-        <title>Metronic | Dashboard</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta content="" name="description" />
-        <meta content="" name="author" />
-        <!-- BEGIN GLOBAL MANDATORY STYLES -->
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-        <link href="{% static  '/admin_new/assets/global/plugins/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
-        <link href="{% static  '/admin_new/assets/global/plugins/simple-line-icons/simple-line-icons.min.css' %}" rel="stylesheet" type="text/css" />
-        <link href="{% static  '/admin_new/assets/global/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
-        <link href="{% static  '/admin_new/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css' %}" rel="stylesheet" type="text/css" />
-        <!-- END GLOBAL MANDATORY STYLES -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="{% static  '/admin_new/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css' %}" rel="stylesheet" type="text/css" />
-        <link href="{% static  '/admin_new/assets/global/plugins/morris/morris.css' %}" rel="stylesheet" type="text/css" />
-        <link href="{% static  '/admin_new/assets/global/plugins/fullcalendar/fullcalendar.min.css' %}" rel="stylesheet" type="text/css" />
-        <link href="{% static  '/admin_new/assets/global/plugins/jqvmap/jqvmap/jqvmap.css' %}" rel="stylesheet" type="text/css" />
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="{% static  '/admin_new/assets/global/css/components.min.css' %}" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="{% static  '/admin_new/assets/global/css/plugins.min.css' %}" rel="stylesheet" type="text/css" />
-        <!-- END THEME GLOBAL STYLES -->
-        <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="{% static  '/admin_new/assets/layouts/layout/css/layout.min.css' %}" rel="stylesheet" type="text/css" />
-        <link href="{% static  '/admin_new/assets/layouts/layout/css/themes/darkblue.min.css' %}" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="{% static  '/admin_new/assets/layouts/layout/css/custom.min.css' %}" rel="stylesheet" type="text/css" />
-        <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" />
-
-
 </head>
 {% load i18n %}
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
+  data-admin-utc-offset="{% now "Z" %}">
 
+<!-- Container -->
+<div id="container">
 
-
-
-        <div class="page-wrapper">
-            <!-- BEGIN HEADER -->
-            <div class="page-header navbar navbar-fixed-top">
-                <!-- BEGIN HEADER INNER -->
-                <div class="page-header-inner ">
-                    <!-- BEGIN LOGO -->
-                    <div class="page-logo">
-                        <a href="{% url 'admin:index' %}">
-                            <img src="{% static 'admin_new/assets/layouts/layout/img/logo.png' %}" alt="logo" class="logo-default" /> </a>
-                        <div class="menu-toggler sidebar-toggler">
-                            <span></span>
-                        </div>
-                    </div>
-                    <!-- END LOGO -->
-                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-                    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span></span>
-                    </a>
-                    <!-- END RESPONSIVE MENU TOGGLER -->
-                    <!-- BEGIN TOP NAVIGATION MENU -->
-                    <div class="top-menu">
-                        <ul class="nav navbar-nav pull-right">
-
-
-
-                            <li class="dropdown dropdown-user">
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <img alt="" class="img-circle" src="../assets/layouts/layout/img/avatar3_small.jpg" />
-                                    <span class="username username-hide-on-mobile"> {% firstof user.get_short_name user.get_username %} </span>
-                                    <i class="fa fa-angle-down"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-default">
-                                    <li>
-                                        <a href="{% url 'admin:password_change' %}">
-                                            <i class="icon-user"></i> My Profile </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="{% url 'logout' %}">
-                                            <i class="icon-key"></i> Log Out </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- END USER LOGIN DROPDOWN -->
-                            <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-
-                            <!-- END QUICK SIDEBAR TOGGLER -->
-                        </ul>
-                    </div>
-                    <!-- END TOP NAVIGATION MENU -->
-                </div>
-                <!-- END HEADER INNER -->
-            </div>
-            <!-- END HEADER -->
-            <!-- BEGIN HEADER & CONTENT DIVIDER -->
-            <div class="clearfix"> </div>
-            <!-- END HEADER & CONTENT DIVIDER -->
-            <!-- BEGIN CONTAINER -->
-            <div class="page-container">
-
-                  <!-- BEGIN SIDEBAR -->
-                <div class="page-sidebar-wrapper">
-                    <!-- BEGIN SIDEBAR -->
-
-                    <div class="page-sidebar navbar-collapse collapse">
-
-                        <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-
-                            <li class="sidebar-toggler-wrapper hide">
-                                <div class="sidebar-toggler">
-                                    <span></span>
-                                </div>
-                            </li>
-
-
-                            <li class="nav-item start active open">
-                                <li class="nav-item start active open">
-                                        <a href="/admin/" class="nav-link ">
-                                            <i class="icon-bar-chart"></i>
-                                            <span class="title">Dashboard</span>
-                                            <span class="selected"></span>
-                                        </a>
-                                    </li>
-
-                            </li>
-
-
-
-
-
-                            <!--<li class="nav-item start">-->
-                                <!--<li class="nav-item start ">-->
-                                        <!--<a href="/admin/users/user/" class="nav-link ">-->
-                                            <!--<i class="icon-diamond"></i>-->
-                                            <!--<span class="title">User</span>-->
-                                            <!--<span class="selected"></span>-->
-                                        <!--</a>-->
-                                    <!--</li>-->
-                            <!--</li>-->
-
-
-
-
-
-
-                            <li class="nav-item start">
-                                <li class="nav-item start ">
-                                        <a href="/admin/auth/group/" class="nav-link ">
-                                            <i class="icon-puzzle"></i>
-                                            <span class="title">Permissions</span>
-                                            <span class="selected"></span>
-                                        </a>
-                                    </li>
-                            </li>
-
-
-
-
-                        </ul>
-                        <!-- END SIDEBAR MENU -->
-                        <!-- END SIDEBAR MENU -->
-                    </div>
-                    <!-- END SIDEBAR -->
-                </div>
-                <!-- END SIDEBAR -->
-                <!-- BEGIN CONTENT -->
-                <div class="page-content-wrapper">
-                    <!-- BEGIN CONTENT BODY -->
-                    <div class="page-content">
-
-
-                        {% if not is_popup %}
-                            {% block usertools %}
-                              {% if has_permission %}
-                              {% endif %}
-                            {% endblock %}
-                        {% endif %}
-
-                        <div>
-                            {% block pretitle %}{% endblock %}
-                            {% block content %}
-                                {% block object-tools %}{% endblock %}
-                              {{ content }}
-                            {% endblock %}
-                            <br class="clear" />
-                        </div>
-
-
-
-                    </div>
-                    <!-- END CONTENT BODY -->
-                </div>
-
-
-
-
-            </div>
-
+    {% if not is_popup %}
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+        {% block branding %}{% endblock %}
         </div>
+        {% block usertools %}
+        {% if has_permission %}
+        <div id="user-tools">
+            {% block welcome-msg %}
+                {% trans 'Welcome,' %}
+                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+            {% endblock %}
+            {% block userlinks %}
+                {% if site_url %}
+                    <a href="{{ site_url }}">{% trans 'View site' %}</a> /
+                {% endif %}
+                {% if user.is_active and user.is_staff %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+                        <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
+                    {% endif %}
+                {% endif %}
+                {% if user.has_usable_password %}
+                <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
+                {% endif %}
+                <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+            {% endblock %}
+        </div>
+        {% endif %}
+        {% endblock %}
+        {% block nav-global %}{% endblock %}
+    </div>
+    <!-- END Header -->
+    {% block breadcrumbs %}
+    <div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+    {% if title %} &rsaquo; {{ title }}{% endif %}
+    </div>
+    {% endblock %}
+    {% endif %}
 
-    </body>
+    {% block messages %}
+        {% if messages %}
+        <ul class="messagelist">{% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+        {% endfor %}</ul>
+        {% endif %}
+    {% endblock messages %}
 
+    <!-- Content -->
+    <div id="content" class="{% block coltype %}colM{% endblock %}">
+        {% block pretitle %}{% endblock %}
+        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+        {% block content %}
+        {% block object-tools %}{% endblock %}
+        {{ content }}
+        {% endblock %}
+        {% block sidebar %}{% endblock %}
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
 
+    {% block footer %}<div id="footer"></div>{% endblock %}
+</div>
+<!-- END Container -->
 
-<script src="{% static 'admin_new/assets/global/plugins/respond.min.js' %}"></script>
-<script src="{% static 'admin_new//assets/global/plugins/excanvas.min.js' %}"></script>
-
-        <!-- BEGIN CORE PLUGINS -->
-        <script src="{% static 'admin_new/assets/global/plugins/jquery.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/js.cookie.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/jquery.blockui.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}" type="text/javascript"></script>
-        <!-- END CORE PLUGINS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="{% static 'admin_new/assets/global/plugins/moment.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/morris/morris.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/morris/raphael-min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/counterup/jquery.waypoints.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/counterup/jquery.counterup.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/amcharts/amcharts/amcharts.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/amcharts/amcharts/serial.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/amcharts/amcharts/pie.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/amcharts/amcharts/radar.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/amcharts/amcharts/themes/light.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/amcharts/amcharts/themes/patterns.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/amcharts/amcharts/themes/chalk.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/amcharts/ammap/ammap.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/amcharts/ammap/maps/js/worldLow.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/amcharts/amstockcharts/amstock.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/fullcalendar/fullcalendar.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/horizontal-timeline/horozontal-timeline.min.js' %}" type="text/javascript"></script>
-        <!--<script src="{% static 'admin_new/assets/global/plugins/flot/jquery.flot.min.js" type="text/javascript' %}"></script>-->
-        <!--<script src="{% static 'admin_new/assets/global/plugins/flot/jquery.flot.resize.min.js" type="text/javascript' %}"></script>-->
-        <!--<script src="{% static 'admin_new/assets/global/plugins/flot/jquery.flot.categories.min.js' %}" type="text/javascript"></script>-->
-        <script src="{% static 'admin_new/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/jquery.sparkline.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js' %}" type="text/javascript"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="{% static 'admin_new/assets/global/scripts/app.min.js' %}" type="text/javascript"></script>
-        <!-- END THEME GLOBAL SCRIPTS -->
-        <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        <script src="{% static 'admin_new/assets/pages/scripts/dashboard.min.js' %}" type="text/javascript"></script>
-        <!-- END PAGE LEVEL SCRIPTS -->
-        <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <script src="{% static 'admin_new/assets/layouts/layout/scripts/layout.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/layouts/layout/scripts/demo.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/layouts/global/scripts/quick-sidebar.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'admin_new/assets/global/plugins/jquery-validation/js/jquery.validate.min.js' %}" type="text/javascript"></script>
-
-
+</body>
 </html>

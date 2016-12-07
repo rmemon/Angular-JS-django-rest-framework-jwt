@@ -6,9 +6,9 @@
 {% endif %}
 {% if results %}
 <div class="results">
-<table class="table table-striped table-bordered table-hover table-checkable order-column" id="result_list">
+<table id="result_list">
 <thead>
-<tr class="odd gradeX">
+<tr>
 {% for header in result_headers %}
 <th scope="col" {{ header.class_attrib }}>
    {% if header.sortable %}
@@ -28,7 +28,7 @@
 <tbody>
 {% for result in results %}
 {% if result.form.non_field_errors %}
-    <tr class="class="odd gradeX""><td colspan="{{ result|length }}">{{ result.form.non_field_errors }}</td></tr>
+    <tr><td colspan="{{ result|length }}">{{ result.form.non_field_errors }}</td></tr>
 {% endif %}
 <tr class="{% cycle 'row1' 'row2' %}">{% for item in result %}{{ item }}{% endfor %}</tr>
 {% endfor %}
@@ -36,5 +36,3 @@
 </table>
 </div>
 {% endif %}
-
-
