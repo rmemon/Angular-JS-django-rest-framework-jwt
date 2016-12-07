@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('blogList').
-    component('blogList', {
+angular.module('productList').
+    component('productList', {
         templateUrl: '/templatess/product.html',
         controller: function(Post, $cookies, $location, $routeParams, $rootScope, $scope){
             // console.log($location.search())
@@ -12,11 +12,13 @@ angular.module('blogList').
                 $scope.didPerformSearch = true;
             }
             $scope.order = '-publish'
-            $scope.goToItem = function(post){
-                $rootScope.$apply(function(){
-                    $location.path("/blog/" + post.id )
-                })
-            }
+
+//            $scope.goToItem = function(post){
+//                $rootScope.$apply(function(){
+//                    $location.path("/blog/" + post.id )
+//                })
+//            }
+
 
             $scope.changeCols = function(number){
                 if (angular.isNumber(number)){
@@ -74,13 +76,12 @@ angular.module('blogList').
 
 
 
-            $scope.deleteProduct = function(post) {
-                console.log(post);
+            $scope.deleteProduct = function(product) {
 
-                post.$delete({"id": post.id,
+                product.$delete({"id": product.id,
 
                 }, function(data){
-                    $location.path("/blog/")
+                    $location.path("/product/")
                 }, function(e_data){
                     console.log(e_data)
 

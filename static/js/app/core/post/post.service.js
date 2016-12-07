@@ -1,41 +1,9 @@
 'use strict';
 
-//angular.
-//    module('core.post').
-//        factory('Post', function(LoginRequiredInterceptor, $cookies, $httpParamSerializer, $location,$resource){
-//            var url = '/api/posts/:id/'
-//            return $resource(url, {}, {
-//                query: {
-//                    method: "GET",
-//                    params: {},
-//                    isArray: true,
-//                    cache: false,
-//                    transformResponse: function(data, headersGetter, status){
-//                         console.log(data);
-//
-//
-//                        var finalData = angular.fromJson(data);
-//                        console.log(finalData);
-//                        return finalData
-//                    }
-//                },
-//                get: {
-//                    method: "GET",
-//                    params: {"id": "@id"},
-//                    isArray: false,
-//                    cache: false,
-//                }
-//            })
-//
-//
-//
-//        });
-
-
         angular.
     module('core.post').
         factory('Post', function(LoginRequiredInterceptor, $cookies, $httpParamSerializer, $location,$resource){
-            var url = '/api/posts/:id/'
+            var url = '/api/product/:id/'
 
             var token = $cookies.get("token");
             return $resource(url, {}, {
@@ -61,24 +29,22 @@
                     interceptor: {responseError: LoginRequiredInterceptor},
                     isArray: false,
                     cache: false,
-
-
                 },
                 delete: {
-                    url: '/api/posts/:id/delete/',
+                    url: '/api/product/:id/delete/',
                     method: "DELETE",
                     headers:{"Authorization": "JWT " + token},
                     interceptor: {responseError: LoginRequiredInterceptor},
 
                 },
                 update:{
-                    url: '/api/post/:id/edit/',
+                    url: '/api/product/:id/edit/',
                     method: "PUT",
                     headers:{"Authorization": "JWT " + token},
                     interceptor: {responseError: LoginRequiredInterceptor},
                 },
                 productdelete:{
-                    url: '/api/posts/:id/delete/',
+                    url: '/api/product/:id/delete/',
                     method: "DELETE",
                     headers:{"Authorization": "JWT " + token},
                     interceptor: {responseError: LoginRequiredInterceptor},

@@ -16,18 +16,18 @@ angular.module('try').
           $resourceProvider.defaults.stripTrailingSlashes = false;
           $routeProvider.
               when("/", {
-                template: "<blog-list></blog-list>",
+                template: "<product-list></product-list>",
               }).
               when("/about", {
                 templateUrl: "/templatess/about.html"
               }).
-              when("/blog", {
-                  template: "<blog-list></blog-list>",
+              when("/product", {
+                  template: "<product-list></product-list>",
 //                  redirectTo: '/'
               }).
 
-              when("/blog/:id", {
-                  template: "<blog-detail></blog-detail>"
+              when("/product/:id", {
+                  template: "<product-detail></product-detail>"
               }).
 
               when("/login", {
@@ -35,12 +35,11 @@ angular.module('try').
                   // redirectTo: '/'
               }).
               when("/logout", {
-                  // template: "<login-detail></login-detail>",
-                  redirectTo: '/login'
+                   template: "<login-detail></login-detail>",
+//                  redirectTo: '/login'
               }).
                when("/register", {
                   template: "<register-detail></register-detail>",
-                  // redirectTo: '/'
               }).
 
               when("/add", {

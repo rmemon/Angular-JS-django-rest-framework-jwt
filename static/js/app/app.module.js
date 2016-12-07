@@ -10,13 +10,13 @@ angular.module('try', [
     'ng-showdown',
     'ui.bootstrap',
     // internal
-//    'blogDetail',
-    'blogList',
+
+    'productList',
     'confirmClick',
     'loginDetail',
-//    'productDetail',
+
     'registerDetail',
-     'blogDetail',
+     'productDetail',
      'tryNav',
      'productAdd',
 ]);

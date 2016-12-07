@@ -6,21 +6,21 @@
     <button style="float:right" class="btn btn-warning"><a ng-href='/add/'>Add Product</a></button>
 </div>
 
-<div dir-paginate='post in items | filter: query | itemsPerPage: 2 as postItems' pagination-id="sub-content">
+<div dir-paginate='product in items | filter: query | itemsPerPage: 2 as productItems' pagination-id="sub-content">
     <div class="col-md-9">
         <div class="item-list-wrap">
             <div id="product-filter">
                 <div class="item-list list panel-body">
                     <div class="item-content">
                         <div class="button-set">
-                            <button class="btn btn-info"><a ng-href='/blog/{{ post.id }}'>View/Update</a></button>
+                            <button class="btn btn-info"><a ng-href='/product/{{ product.id }}'>View/Update</a></button>
                             <button class="btn btn-danger" type="button" class=""
-                                    confirm-click='Do you want to delete this?' confirmed-click='deleteProduct(post)'>
+                                    confirm-click='Do you want to delete this?' confirmed-click='deleteProduct(product)'>
                                 Delete
                             </button>
                         </div>
                         <div class="heading">
-                            <h4 class="text-dark heading-tag">{{ post.title | uppercase }} </h4>
+                            <h4 class="text-dark heading-tag">{{ product.title | uppercase }} </h4>
                         </div>
                         <table class="table font-size16 font-light text-dark">
                             <colgroup>
@@ -30,15 +30,15 @@
                             <tbody>
                             <tr>
                                 <td>Per Hour</td>
-                                <td class="text-green"><strong>${{ post.charge_perhour }}</strong></td>
+                                <td class="text-green"><strong>${{ product.charge_perhour }}</strong></td>
                             </tr>
                             <tr>
                                 <td>Per Day</td>
-                                <td class="text-green"><strong> ${{ post.charge_perday }} </strong></td>
+                                <td class="text-green"><strong> ${{ product.charge_perday }} </strong></td>
                             </tr>
                             <tr>
                                 <td>Per Week</td>
-                                <td class="text-green"><strong> ${{ post.charge_perday }} </strong></td>
+                                <td class="text-green"><strong> ${{ product.charge_perday }} </strong></td>
                             </tr>
                             </tbody>
                         </table>
@@ -53,5 +53,5 @@
 </div>
 <dir-pagination-controls ng-hide='query.length > 0' pagination-id="sub-content"></dir-pagination-controls>
 <br/>
-<span ng-if='postItems.length == 0'>No Posts Founds</span>
+<span ng-if='productItems.length == 0'>No Posts Founds</span>
 </div>

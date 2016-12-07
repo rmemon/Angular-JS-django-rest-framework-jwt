@@ -34,14 +34,14 @@ urlpatterns = [
     url(r'^api/users/', include("users.urls", namespace='users-api')),
     url(r'^admin/logout$', user_views.logout_view, name='logout'),
 
-    url(r'^api/posts/$', PostListAPIView.as_view()),
-    url(r'^api/posts/(?P<id>[0-9]+)/$', ProductDetailAPIView.as_view(), name='detail'),
+    url(r'^api/product/$', PostListAPIView.as_view()),
+    url(r'^api/product/(?P<id>[0-9]+)/$', ProductDetailAPIView.as_view(), name='detail'),
 
-    url(r'^api/post/(?P<id>[0-9]+)/edit/$', ProductUpdateAPIView.as_view(), name='detail'),
+    url(r'^api/product/(?P<id>[0-9]+)/edit/$', ProductUpdateAPIView.as_view(), name='detail'),
 
     url(r'^api/product/add/', PostCreateAPIView.as_view()),
 
-    url(r'^api/posts/(?P<id>[0-9]+)/delete/$', ProductDeleteAPIView.as_view(), name='delete'),
+    url(r'^api/product/(?P<id>[0-9]+)/delete/$', ProductDeleteAPIView.as_view(), name='delete'),
 
 ]
 
