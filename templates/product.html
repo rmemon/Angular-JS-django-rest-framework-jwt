@@ -3,7 +3,7 @@
 </div>
 
 <div class="form-group col-xs-7">
-    <button style="float:right" class="btn btn-warning"><a ng-href='/add/'>Add Product</a></button>
+    <a style="float:right" class="btn btn-warning" ng-href='/add/'>Add Product</a>
 </div>
 
 <div dir-paginate='product in items | filter: query | itemsPerPage: 2 as productItems' pagination-id="sub-content">
@@ -48,8 +48,6 @@
         </div>
         <hr>
     </div>
-
-
 </div>
 <dir-pagination-controls ng-hide='query.length > 0' pagination-id="sub-content"></dir-pagination-controls>
 <br/>
